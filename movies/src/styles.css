@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+.main-menu a{
+    padding: 5px;
+    background-color: lightblue;
+    border: 1px solid grey;
+    margin-left:5px;
+    text-decoration: none;
+}
+.main-menu a.active{
+    background-color: lightcoral;
+
+}
+.mi-striped tbody tr:nth-child(odd) {
+    --bs-table-striped-bg:rgb(202, 234, 244);
+    --bs-table-striped-color: rgb(200, 37, 194);
+  
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

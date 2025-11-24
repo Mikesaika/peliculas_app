@@ -1,0 +1,34 @@
+<!--  mt margin-top // mb margin-botton// ms margin start// ms margin end-->
+<div class="container ,t-4">
+    <div class="d-flex justify-content-between align-items-center">
+          <h2>CRUD de peliculas</h2>
+          <button class="btn btn-success">Nueva pelicula</button>
+    </div>
+  <input type="text"class="form-control mb-3" placeholder="buscar pelicula..." #busq (keyup)="search(busq)" />
+  <table class="table table-striped-bordered table-hover mi-striped" >
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Fecha</th>
+        <th>Presupuesto</th>
+        <th>Genero</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(movie of movies; track $index){
+      <tr>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.releaseDate }}</td>
+        <td>{{ movie.budget }}</td>
+        <td>{{ getGenreName(movie.genreId) }}</td>
+        <td>
+          <button class="btn btn-info btn-lm me-2" (click)="(movie.id)"><i class="bi bi-eye-fill"></i></button>
+          <button class="btn btn-primary btn-sm me-2"(click)="edit(movie)"><i class="bi bi-pen-fill"></i></button>
+          <button class="btn btn-danger btn-sm me-2"(click)="delete(movie)"><i class="bi bi-trash-fill"></i></button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

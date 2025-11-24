@@ -1,0 +1,114 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "title": "Dune Part Two",
+      "genreId": 1,
+      "releaseDate": "2024-03-15",
+      "budget": 250000,
+      "rating": "PG-13",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
+      "active": true
+    },
+    {
+      "id": "3",
+      "title": "Avatar 3",
+      "genreId": 1,
+      "releaseDate": "2024-12-20",
+      "budget": 250000000,
+      "rating": "PG-13",
+      "poster": "https://i.blogs.es/ac7c3a/avatar_fire_and_ash_logo/450_1000.jpeg",
+      "active": true
+    },
+    {
+      "id": "4",
+      "title": "Inside Out 2",
+      "genreId": 3,
+      "releaseDate": "2024-06-14",
+      "budget": 200000000,
+      "rating": "PG",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpLRYlcMSuE3YXGHxQYOqXL_abzlOVTOn38w&s",
+      "active": false
+    }
+  ],
+  "genres": [
+    {
+      "id": "1",
+      "name": "Sci-Fi",
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Action",
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "Animation",
+      "active": true
+    },
+    {
+      "id": "4",
+      "name": "Adventure",
+      "active": true
+    },
+    {
+      "id": "5",
+      "name": "Drama",
+      "active": false
+    },
+    {
+      "id": "6",
+      "name": "Romance",
+      "active": true
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Carlos",
+      "gender": "M",
+      "role": "admin",
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Juanita",
+      "gender": "F",
+      "role": "viewer",
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "María",
+      "gender": "F",
+      "role": "editor",
+      "active": false
+    },
+    {
+      "id": "4",
+      "name": "Jorge",
+      "gender": "M",
+      "role": "viewer",
+      "active": true
+    }
+  ],
+  "sales": [
+    {
+      "id": "1",
+      "movieId": 2,
+      "userId": 1,
+      "date": "2024-10-15",
+      "total": 12.5,
+      "active": true
+    },
+    {
+      "id": "2",
+      "movieId": 1,
+      "userId": 3,
+      "date": "2024-10-18",
+      "total": 10,
+      "active": false
+    }
+  ]
+}

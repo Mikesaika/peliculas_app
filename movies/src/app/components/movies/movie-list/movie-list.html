@@ -1,0 +1,22 @@
+<p>componente movie-list works!</p>
+<h3>Lista de peliculas</h3>
+<!---existen directivas estructurales, de componentes y de atributos -->
+<h4>Directivas estructuradas</h4> 
+@if (movies.length===0) {
+    <p>No hay peliculas que mostras</p>
+}@else {
+    @for (movie of movies; track $index) {
+        <div class="pelicula">
+            <h4>{{ movie.title | uppercase}}</h4>
+            <img [src]="movie.poster" [alt]="movie.title" #poster (mouseenter)="activar(poster)" 
+            (mouseleave)="desactivar(poster)">
+            <p>{{ getGenreName(movie.genreId) }}</p>
+            <p><strong>Fecha:</strong> {{movie.releaseDate| date:"dd-MMMM-yyyy"}}</p>
+            <p><strong>Presupuesto:</strong> {{movie.budget| currency:"EUR"}}</p>
+            <button class ="btnComprar" (click)="comprar(movie)"> Comprar</button>
+
+        </div>
+
+
+    }
+}
