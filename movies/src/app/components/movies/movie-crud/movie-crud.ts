@@ -4,24 +4,31 @@ import { ServMoviesJson } from '../../../services/serv-movies-json';
 import { genre } from '../../../models/genre';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';  
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
+import { TableReutilizable } from '../table-reutilizable/table-reutilizable'; // ✅
+import { NgIf } from '@angular/common';                                      // ✅
 
 @Component({
   selector: 'app-movie-crud',
   standalone: true,
-  imports: [MatDialogModule], 
+  imports: [MatDialogModule,
+    NgIf,
+    TableReutilizable
+  ],
   templateUrl: './movie-crud.html',
   styleUrl: './movie-crud.css',
 })
 export class MovieCrud {
   movies: movie[] = [];
   genres: genre[] = [];
+  selectedMovies: movie[] = [];
+  showTable: boolean = false;
 
-//se agrega en el contructor el inyecto matdialog
+  //se agrega en el contructor el inyecto matdialog
   constructor(
-    private miServicio: ServMoviesJson, 
+    private miServicio: ServMoviesJson,
     private router: Router,
-    private dialog: MatDialog 
+    private dialog: MatDialog
   ) {
     this.loadMovie();
     this.loadGenres();
@@ -57,13 +64,13 @@ export class MovieCrud {
         message: `¿Estás seguro de que deseas eliminar "${movieSeleccionada.title}"?`
       }
     });
-// se confirma para luego borrar
+    // se confirma para luego borrar
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.miServicio.deleteMovie(movieSeleccionada.id!).subscribe(() => {
-// una alerta de que fue borrada la pelicula
-          alert("Eliminado exitosamente"); 
-          this.loadMovie(); 
+          // una alerta de que fue borrada la pelicula
+          alert("Eliminado exitosamente");
+          this.loadMovie();
         });
       }
     });
@@ -79,4 +86,21 @@ export class MovieCrud {
   view(id: number | undefined) {
     this.router.navigate([`/movie-view`, id]);
   }
+  showTableFor(movieId: number | undefined) {
+    if (movieId == null) {
+      this.showTable = false;
+      this.selectedMovies = [];
+      return;
+    }
+
+    // Filtrar solo la película seleccionada
+    this.selectedMovies = this.movies.filter(m => m.id === movieId);
+
+    // mostrar la tabla solo si encontramos algo
+    this.showTable = this.selectedMovies.length > 0;
+  }
+  closeTable() {
+  this.showTable = false;
+  this.selectedMovies = [];
+}
 }
